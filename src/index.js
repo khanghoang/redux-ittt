@@ -14,7 +14,7 @@ class LogicFunctor {
     if (!this || !this.getAction()) {
       return;
     }
-    const newAction = cb(store, store);
+    const newAction = cb();
     return new LogicFunctor(newAction, this.store);
   }
   mapTo(newAction) {
