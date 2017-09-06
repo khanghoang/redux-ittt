@@ -6,7 +6,8 @@
   "scripts": {
     "test:watch": "jest --watchAll",
     "prepublish": "yarn run build",
-    "postpublish": "rm -rf dist/*",
+    "postpublish": "rm -rf dist",
+    "prebuild": "rm -rf dist",
     "build": "rollup ./src/index --format umd --output dist/index.js --name 'redux-ittt'"
   },
   "peerDependencies": {
