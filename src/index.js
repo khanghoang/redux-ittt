@@ -1,23 +1,46 @@
-const LogicFunctor = (action, store) => {
-  return {
-    ofType: type => {
-      if (action.type === type) {
-        return this;
-      }
+class LogicFunctor {
+  constructor(action, store) {
+    this.action = action;
+    this.store = store;
+  }
 
-      console.log('this: ', this);
-
+  ofType(type) {
+    if (this.action.type === type) {
+      return this;
+    }
+    return new LogicFunctor(null, this.store);
+  }
+  map(cb) {
+    if (!this || !this.getAction()) {
       return;
-    },
-    map: cb => {
-      const newAction = cb(store);
-      return LogicFunctor(newAction, store);
-    },
-    mapTo: newAction => {
-      store.dispatch(newAction);
-    },
-  };
-};
+    }
+    const newAction = cb(store, store);
+    return new LogicFunctor(newAction, this.store);
+  }
+  mapTo(newAction) {
+    if (!this || !this.getAction()) {
+      return;
+    }
+    return new LogicFunctor(newAction, this.store);
+  }
+
+  getAction() {
+    if (!this) {
+      return null;
+    }
+    return this.action;
+  }
+}
+
+export const inject = (customMethods) => {
+  Object.keys(customMethods).forEach(k => {
+    LogicFunctor.prototype[k] = function(...args) {
+      const newAction = customMethods[k](this.action, this.store, ...args);
+      const newFunctor = new LogicFunctor(newAction, this.store);
+      return newFunctor;
+    };
+  });
+}
 
 const flatten = (rootLogics, logic) => {
   if (Array.isArray(logic)) {
@@ -35,11 +58,19 @@ export const combineLogics = (...args) => {
 
 export const makeLogicMiddleware = rootLogic => store => next => action => {
   next(action);
-  if (Array.isArray(rootLogic)) {
-    rootLogic.forEach(logic => {
-      logic(action, store);
-    });
-    return;
+
+  let newRootLogic = rootLogic;
+
+  if (!Array.isArray(rootLogic)) {
+    newRootLogic = [rootLogic];
   }
-  rootLogic(action, store);
+
+  newRootLogic.forEach(logic => {
+    const finalActionFunctor = logic(new LogicFunctor(action, store), store);
+    if (!finalActionFunctor || !finalActionFunctor.getAction()) return;
+    const finalAction = finalActionFunctor.getAction();
+    if (finalAction) {
+      store.dispatch(finalAction);
+    }
+  });
 };
