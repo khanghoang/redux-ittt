@@ -1,10 +1,13 @@
 {
   "name": "redux-ittt",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "prepublish": "rm -rf dist/*",
+    "postpublish": "rm -rf dist/*",
+    "build": "rollup ./src/index --format umd --output dist/index.js --name 'redux-ittt'"
   },
   "peerDependencies": {
     "redux": "^3.7.2"
