@@ -3,7 +3,7 @@ import configureStore from 'redux-mock-store';
 import { makeLogicMiddleware, combineLogics, inject } from '../src/index';
 
 inject({
-  withThisTypeReturnBar: (action, store, extraParam) => {
+  withThisTypeReturnBar: (extraParam, action, store) => {
     if (action.type === extraParam) {
       return { type: 'bar' };
     }
@@ -60,9 +60,24 @@ describe('Redux if this do that', function() {
     expect(logic.mock.calls.length).toEqual(2);
   });
 
+  it('get called with action and store', function() {
+    const logic = jest.fn();
+    const middleware = makeLogicMiddleware(combineLogics(logic));
+    const mockStore = configureStore([middleware]);
+    const store = mockStore();
+    const action = { type: 'foo' };
+    store.dispatch(action);
+    expect(logic.mock.calls[0][0].action).toEqual(action);
+    expect(logic.mock.calls[0][1]).toEqual(
+      expect.objectContaining({
+        dispatch: expect.any(Function),
+        getState: expect.any(Function),
+      })
+    );
+  });
+
   it('be injected with handy functions', function() {
-    const logic = (action, store) =>
-      action.withThisTypeReturnBar('foo');
+    const logic = (action, store) => action.withThisTypeReturnBar('foo');
     const middleware = makeLogicMiddleware(logic);
     const mockStore = configureStore([middleware]);
     const store = mockStore();

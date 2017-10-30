@@ -35,7 +35,7 @@ class LogicFunctor {
 export const inject = (customMethods) => {
   Object.keys(customMethods).forEach(k => {
     LogicFunctor.prototype[k] = function(...args) {
-      const newAction = customMethods[k](this.action, this.store, ...args);
+      const newAction = customMethods[k](...args, this.action, this.store);
       const newFunctor = new LogicFunctor(newAction, this.store);
       return newFunctor;
     };
