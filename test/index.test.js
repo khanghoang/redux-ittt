@@ -61,14 +61,16 @@ describe('Redux if this do that', function() {
   });
 
   it('get called with action and store', function() {
-    const logic = jest.fn();
+    const mockMap = jest.fn();
+    const logic = (action, store) =>
+      action.ofType('foo').map(mockMap);
     const middleware = makeLogicMiddleware(combineLogics(logic));
     const mockStore = configureStore([middleware]);
     const store = mockStore();
     const action = { type: 'foo' };
     store.dispatch(action);
-    expect(logic.mock.calls[0][0].action).toEqual(action);
-    expect(logic.mock.calls[0][1]).toEqual(
+    expect(mockMap.mock.calls[0][0]).toEqual(action);
+    expect(mockMap.mock.calls[0][1]).toEqual(
       expect.objectContaining({
         dispatch: expect.any(Function),
         getState: expect.any(Function),
