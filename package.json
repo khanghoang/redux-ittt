@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test:watch": "jest --watchAll",
+    "test": "jest --runInBand",
     "prepublish": "yarn run build",
     "postpublish": "rm -rf dist",
     "prebuild": "rm -rf dist",
