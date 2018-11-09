@@ -1,0 +1,64 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Action	dist/index.js	/^        var newAction = cb(this.getAction(), this.store);$/;"	c
+Action	src/index.js	/^    const newAction = cb(this.getAction(), this.store);$/;"	c
+ActionFunctor	dist/index.js	/^            var finalActionFunctor = logic(new LogicFunctor(action, store), store);$/;"	c
+ActionFunctor	src/index.js	/^    const finalActionFunctor = logic(new LogicFunctor(action, store), store);$/;"	c
+CallCheck	dist/index.js	/^  var classCallCheck = function (instance, Constructor) {$/;"	c
+Class	dist/index.js	/^  var createClass = function () {$/;"	c
+LogicFunctor	dist/index.js	/^    function LogicFunctor(action, store) {$/;"	f
+LogicFunctor	dist/index.js	/^  var LogicFunctor = function () {$/;"	c
+LogicFunctor	dist/index.js	/^  var LogicFunctor = function () {$/;"	f
+LogicFunctor	src/index.js	/^class LogicFunctor {$/;"	c
+Logics	src/index.js	/^export const combineLogics = (...args) => {$/;"	c
+Store	test/index.test.js	/^    const mockStore = configureStore([middleware]);$/;"	c
+ThisTypeReturnBar	test/index.test.js	/^  withThisTypeReturnBar: (extraParam, action, store) => {$/;"	c
+as	dist/index.js	/^      throw new TypeError("Cannot call a class as a function");$/;"	c
+classCallCheck	dist/index.js	/^  var classCallCheck = function (instance, Constructor) {$/;"	f
+combineLogics	dist/index.js	/^  var combineLogics = function combineLogics() {$/;"	f
+constructor	src/index.js	/^  constructor(action, store) {$/;"	f
+createClass	dist/index.js	/^  var createClass = function () {$/;"	f
+defineProperties	dist/index.js	/^    function defineProperties(target, props) {$/;"	f
+describe	test/index.test.js	/^describe('Redux if this do that', function() {$/;"	f
+flatten	dist/index.js	/^  var flatten = function flatten(rootLogics, logic) {$/;"	f
+for	dist/index.js	/^      for (var i = 0; i < props.length; i++) {$/;"	f
+forEach	dist/index.js	/^          newRootLogic.forEach(function (logic) {$/;"	f
+forEach	dist/index.js	/^      logic.forEach(function (l) {$/;"	f
+forEach	dist/index.js	/^    Object.keys(customMethods).forEach(function (k) {$/;"	f
+function	dist/index.js	/^        return function (action) {$/;"	f
+function	dist/index.js	/^      LogicFunctor.prototype[k] = function () {$/;"	f
+function	dist/index.js	/^      return function (next) {$/;"	f
+function	dist/index.js	/^    return function (Constructor, protoProps, staticProps) {$/;"	f
+function	dist/index.js	/^    return function (store) {$/;"	f
+function	dist/index.js	/^  var LogicFunctor = function () {$/;"	f
+function	dist/index.js	/^  var classCallCheck = function (instance, Constructor) {$/;"	f
+function	dist/index.js	/^  var createClass = function () {$/;"	f
+function	dist/index.js	/^(function (global, factory) {$/;"	f
+function	dist/index.js	/^}(this, (function (exports) { 'use strict';$/;"	f
+function	src/index.js	/^    LogicFunctor.prototype[k] = function(...args) {$/;"	f
+getAction	dist/index.js	/^      value: function getAction() {$/;"	f
+getAction	src/index.js	/^  getAction() {$/;"	f
+if	dist/index.js	/^            if (finalAction) {$/;"	f
+if	dist/index.js	/^        if (!this) {$/;"	f
+if	dist/index.js	/^        if (this.action.type === type) {$/;"	f
+if	src/index.js	/^    if (!this) {$/;"	f
+if	src/index.js	/^    if (finalAction) {$/;"	f
+if	src/index.js	/^    if (this.action.type === type) {$/;"	f
+if	test/index.test.js	/^    if (action.type === extraParam) {$/;"	f
+inject	dist/index.js	/^  var inject = function inject(customMethods) {$/;"	f
+it	test/index.test.js	/^  it('be injected with handy functions', function() {$/;"	f
+it	test/index.test.js	/^  it('can be composed', function() {$/;"	f
+it	test/index.test.js	/^  it('get called with action and store', function() {$/;"	f
+it	test/index.test.js	/^  it('gets called every action', function() {$/;"	f
+it	test/index.test.js	/^  it('is a middleware', function() {$/;"	f
+makeLogicMiddleware	dist/index.js	/^  var makeLogicMiddleware = function makeLogicMiddleware(rootLogic) {$/;"	f
+map	dist/index.js	/^      value: function map(cb) {$/;"	f
+map	src/index.js	/^  map(cb) {$/;"	f
+mapTo	dist/index.js	/^      value: function mapTo(newAction) {$/;"	f
+mapTo	src/index.js	/^  mapTo(newAction) {$/;"	f
+ofType	dist/index.js	/^      value: function ofType(type) {$/;"	f
+ofType	src/index.js	/^  ofType(type) {$/;"	f
