@@ -1,4 +1,4 @@
-import "proxy-polyfill";
+import "proxy-polyfill/src/index";
 
 class LogicFunctor {
   constructor(action, store) {
