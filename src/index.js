@@ -28,7 +28,16 @@ class LogicFunctor {
       return;
     }
     const action = this.getAction();
-    return fn(action, this.store);
+    fn(action, this.store);
+
+    const trappedLogic = new LogicFunctor();
+    return new Proxy(trappedLogic, {
+      get: function () {
+        return () => {
+          console.warn(`Redux-ittt "Each" is not chainable`);
+        }
+      }
+    });
   }
   getAction() {
     if (!this) {

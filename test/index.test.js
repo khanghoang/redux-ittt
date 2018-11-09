@@ -93,6 +93,42 @@ describe('Redux if this do that', function() {
       expect(mockFunc.mock.calls.length).toEqual(2);
     });
 
+    it('is not chainable', function() {
+      const mockFunc = jest.fn();
+      const logic = (action, store) =>
+        action.ofType('foo').each(mockFunc);
+
+      const middleware = makeLogicMiddleware(combineLogics(logic));
+      const mockStore = configureStore([middleware]);
+      const store = mockStore();
+
+      store.dispatch({ type: 'foo' });
+
+      const actions = store.getActions(); 
+      expect(actions).toEqual([ { type: 'foo' } ]);
+    });
+
+    it('logs to console that "Each" method is un-chainable', () => {
+      const messsge = 'Redux-ittt "Each" is not chainable';
+      const mockLog = jest.fn();
+      const originLog = console.warn;
+      console.warn = mockLog;
+
+      const logic = (action, store) =>
+        action.ofType('foo').each(() => {}).map({ type: 'not-chainable' });
+
+      const middleware = makeLogicMiddleware(combineLogics(logic));
+      const mockStore = configureStore([middleware]);
+      const store = mockStore();
+
+      store.dispatch({ type: 'foo' });
+
+      const actions = store.getActions(); 
+
+      console.warn = originLog;
+      expect(mockLog.mock.calls[0][0]).toEqual(messsge);
+    });
+
     it('gets called with action and store as params', function() {
       const mockFunc = jest.fn();
       const logic = (action, store) =>
