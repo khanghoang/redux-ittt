@@ -1,3 +1,5 @@
+import "proxy-polyfill";
+
 class LogicFunctor {
   constructor(action, store) {
     this.action = action;
