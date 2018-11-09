@@ -13,7 +13,7 @@
     "commit": "npx git-cz"
   },
   "peerDependencies": {
-    "redux": "^3.7.2"
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",

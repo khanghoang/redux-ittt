@@ -23,7 +23,13 @@ class LogicFunctor {
     }
     return new LogicFunctor(newAction, this.store);
   }
-
+  each(fn) {
+    if (!this || !this.getAction()) {
+      return;
+    }
+    const action = this.getAction();
+    return fn(action, this.store);
+  }
   getAction() {
     if (!this) {
       return null;

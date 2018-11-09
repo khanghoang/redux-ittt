@@ -15,6 +15,7 @@ LogicFunctor	dist/index.js	/^  var LogicFunctor = function () {$/;"	c
 LogicFunctor	dist/index.js	/^  var LogicFunctor = function () {$/;"	f
 LogicFunctor	src/index.js	/^class LogicFunctor {$/;"	c
 Logics	src/index.js	/^export const combineLogics = (...args) => {$/;"	c
+Store	test/index.test.js	/^      const mockStore = configureStore([middleware]);$/;"	c
 Store	test/index.test.js	/^    const mockStore = configureStore([middleware]);$/;"	c
 ThisTypeReturnBar	test/index.test.js	/^  withThisTypeReturnBar: (extraParam, action, store) => {$/;"	c
 as	dist/index.js	/^      throw new TypeError("Cannot call a class as a function");$/;"	c
@@ -23,7 +24,9 @@ combineLogics	dist/index.js	/^  var combineLogics = function combineLogics() {$/
 constructor	src/index.js	/^  constructor(action, store) {$/;"	f
 createClass	dist/index.js	/^  var createClass = function () {$/;"	f
 defineProperties	dist/index.js	/^    function defineProperties(target, props) {$/;"	f
+describe	test/index.test.js	/^  describe('`Each` method', function() {$/;"	f
 describe	test/index.test.js	/^describe('Redux if this do that', function() {$/;"	f
+each	src/index.js	/^  each(fn) {$/;"	f
 flatten	dist/index.js	/^  var flatten = function flatten(rootLogics, logic) {$/;"	f
 for	dist/index.js	/^      for (var i = 0; i < props.length; i++) {$/;"	f
 forEach	dist/index.js	/^          newRootLogic.forEach(function (logic) {$/;"	f
@@ -50,6 +53,8 @@ if	src/index.js	/^    if (finalAction) {$/;"	f
 if	src/index.js	/^    if (this.action.type === type) {$/;"	f
 if	test/index.test.js	/^    if (action.type === extraParam) {$/;"	f
 inject	dist/index.js	/^  var inject = function inject(customMethods) {$/;"	f
+it	test/index.test.js	/^    it('gets called with action and store as params', function() {$/;"	f
+it	test/index.test.js	/^    it('should method', function() {$/;"	f
 it	test/index.test.js	/^  it('be injected with handy functions', function() {$/;"	f
 it	test/index.test.js	/^  it('can be composed', function() {$/;"	f
 it	test/index.test.js	/^  it('get called with action and store', function() {$/;"	f
@@ -62,3 +67,5 @@ mapTo	dist/index.js	/^      value: function mapTo(newAction) {$/;"	f
 mapTo	src/index.js	/^  mapTo(newAction) {$/;"	f
 ofType	dist/index.js	/^      value: function ofType(type) {$/;"	f
 ofType	src/index.js	/^  ofType(type) {$/;"	f
+payload	test/index.test.js	/^        payload: {$/;"	o
+payload	test/index.test.js	/^      store.dispatch({ type: 'foo', payload: { foo : 'bar' } });$/;"	o

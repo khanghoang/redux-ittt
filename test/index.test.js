@@ -78,6 +78,47 @@ describe('Redux if this do that', function() {
     );
   });
 
+  describe('`Each` method', function() {
+    it('should method', function() {
+      const mockFunc = jest.fn();
+      const logic = (action, store) =>
+        action.ofType('foo').each(mockFunc);
+
+      const middleware = makeLogicMiddleware(combineLogics(logic));
+      const mockStore = configureStore([middleware]);
+      const store = mockStore();
+      store.dispatch({ type: 'foo' });
+      store.dispatch({ type: 'bar' });
+      store.dispatch({ type: 'foo' });
+      expect(mockFunc.mock.calls.length).toEqual(2);
+    });
+
+    it('gets called with action and store as params', function() {
+      const mockFunc = jest.fn();
+      const logic = (action, store) =>
+        action.ofType('foo').each(mockFunc);
+
+      const middleware = makeLogicMiddleware(combineLogics(logic));
+      const mockStore = configureStore([middleware]);
+      const store = mockStore();
+      store.dispatch({ type: 'foo', payload: { foo : 'bar' } });
+
+      expect(mockFunc.mock.calls.length).toEqual(1);
+      expect(mockFunc.mock.calls[0][0]).toEqual({
+        type: 'foo',
+        payload: {
+          foo: 'bar'
+        }
+      });
+      expect(mockFunc.mock.calls[0][1]).toEqual(
+        expect.objectContaining({
+          dispatch: expect.any(Function),
+          getState: expect.any(Function),
+        })
+      );
+    });
+  });
+
   it('be injected with handy functions', function() {
     const logic = (action, store) => action.withThisTypeReturnBar('foo');
     const middleware = makeLogicMiddleware(logic);
