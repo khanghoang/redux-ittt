@@ -1,6 +1,6 @@
 {
   "name": "redux-ittt",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
