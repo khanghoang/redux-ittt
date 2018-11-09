@@ -3,5 +3,8 @@ sudo: false
 
 node_js:
   - "6.11.4"
+
+install:
+  yarn && yarn add --peer redux
   
 after_success: 'npm run coveralls'
